@@ -1,0 +1,17 @@
+[
+  {
+    "payment_date": "2023-06-10",
+    "paid_amount": 200.00,
+    "bill_id": 1
+  },
+  {
+    "payment_date": "2023-06-15",
+    "paid_amount": 150.00,
+    "bill_id": 2
+  },
+  {
+    "payment_date": "2023-06-20",
+    "paid_amount": 100.00,
+    "bill_id": 1
+  }
+]

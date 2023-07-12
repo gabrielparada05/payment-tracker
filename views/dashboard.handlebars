@@ -1,0 +1,77 @@
+{{#with user}}
+
+
+<h4 id="id-user"> Good {{timeOfDays}}, {{toUpperCase username}}</h4>
+<div class="list-group2">
+  <div id="btn-new-bill">
+    <a href="/bill/new" class="btn mt-3" id="btn-new-dash">Add a new bill</a>
+  </div>
+  <div>
+    <h2>Bills</h2>
+  </div>
+</div>
+<ol class="list-group list-group-flush ">
+  {{#each bills}}
+  <li class="list-group-item py-3">
+      {{> billDetails}}
+  </li>
+  {{/each}}
+</ol>
+{{/with}}
+<div id="paymentModal" class="modal" aria-hidden="true" aria-labelledby="">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Add Payment</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="makePaymentBillInfo"></p>
+        <input id="billIdHidden" type="hidden">
+        <form>
+          <div class="mb-3">
+            <label for="makePaymentAmount" class="form-label">Amount:</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input id="paymentAmount" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+            </div>
+          </div>
+          <p id="paymentFormFeedback" class="form-text"></p>
+          <div class="d-flex justify-content-between">
+            <button id="paymentSubmitButton" type="submit" class="btn">Submit</button>
+            <button id="paymentDeleteButton" type="button" class="btn d-none">Delete</button>
+          </div>
+          <div id="paymentConfirmDeleteDiv" class="mt-3 d-none">
+            <p id="paymentConfirmDeleteText">Warning: Deleting this bill cannot be undone!</p>
+            <button id="paymentConfirmDeleteButton" type="button" class="btn">Confirm Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/paymentModalScript.js"></script>
+
+<div id="scheduleReminderModal" class="modal" aria-hidden="true" aria-labelledby="">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Schedule Reminder</h1>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="reminderModalDueDate"></p>
+        <input id="reminderBillIdHidden" type="hidden">
+        <form>
+          <div class="mb-3">
+            <label for="reminderDatePicker" class="form-label">Remind me on:</label>
+            <input id="reminderDatePicker" type="date" class="form-control">
+          </div>
+          <p id="reminderFormFeedback" class="form-text"></p>
+          <button id="reminderSubmitButton" class="btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/reminderModalScript.js"></script>

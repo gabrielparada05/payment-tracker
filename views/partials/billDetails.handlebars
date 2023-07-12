@@ -1,0 +1,31 @@
+<h5>{{description}}</h5>
+<p>Due on {{format_date due_date}}</p>
+<p>Total due: ${{total_due}}</p>
+<p>Minimum due: ${{minimum_due}}</p>
+<a href="/bill/{{id}}" class="btn mb-3" id="edit-btn">Edit Bill</a>
+<input id="billInfo{{id}}" type="hidden" value="{{to_json this}}">
+<h3>Payments:</h3>
+{{#unless payments}}
+    <ol id="paymentListEmpty" class="list-group">
+        <li class="list-group-item bills">
+            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNo recorded payments&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+        </li>
+    </ol>
+{{/unless}}
+<ol id="paymentList{{id}}" class="list-group ">
+    {{#each payments}}
+        <li class="list-group-item bills">
+            <p id="amountPaidPara{{id}}">Amount paid: ${{paid_amount}}</p>
+            <p>Paid on {{format_date payment_date}}</p>
+            <button type="button" class="btn d-block mt-3" data-bill-info-id="billInfo{{../id}}" data-payment-info-id="paymentInfo{{id}}">Edit Amount</button>
+            <input id="paymentInfo{{id}}" type="hidden" value="{{to_json this}}">
+        </li>
+    {{/each}}
+</ol>
+<div class="btn-set-add">
+<button type="button" class="btn d-block mt-3" data-bill-info-id="billInfo{{id}}">Add a payment</button>
+<button type="button" class="btn d-block mt-3"
+    data-reminder-bill-id="{{id}}"
+    data-due-date="{{due_date}}"
+>Set a reminder</button>
+</div>

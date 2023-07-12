@@ -1,0 +1,40 @@
+
+<h4 id="id-user"> Good {{timeOfDays}}, {{toUpperCase username}} </h4> 
+<h2>{{#if bill}}Edit{{else}}Create{{/if}} Bill</h2>
+<input id="billIdHidden" type="hidden" value="{{#if bill}}{{bill.id}}{{/if}}">
+<input id="submitPathHidden" type="hidden" value="{{#if bill}}/api/bills/{{bill.id}}{{else}}/api/bills{{/if}}">
+<input id="submitMethodHidden" type="hidden" value="{{#if bill}}PUT{{else}}POST{{/if}}">
+<form class="new-bill">
+    <div class="mb-3">
+        <label for="billDescription" class="form-label">Description:</label>
+        <input id="billDescription" type="text" class="form-control" {{#if bill}}value="{{bill.description}}"{{/if}}>
+    </div>
+    <div class="mb-3">
+        <label for="dueDate" class="form-label">Due Date:</label>
+        <input id="dueDate" type="date" class="form-control" {{#if bill}}value="{{format_date_iso bill.due_date}}"{{/if}}>
+    </div>
+    <div class="mb-3">
+        <label for="totalDue" class="form-label">Total Due:</label>
+        <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input id="totalDue" type="number" class="form-control" aria-label="Amount (to the nearest dollar)" {{#if bill}}value="{{bill.total_due}}"{{/if}}>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="minimumDue" class="form-label">Minimum Due:</label>
+        <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input id="minimumDue" type="number" class="form-control" aria-label="Amount (to the nearest dollar)" {{#if bill}}value="{{bill.minimum_due}}"{{/if}}>
+        </div>
+    </div>
+    <p id="billFormFeedback" class="form-text"></p>
+    <div class="d-flex justify-content-between">
+        <button id="billSubmitButton" type="submit" class="btn">Submit</button>
+        <button id="billDeleteButton" type="button" class="btn {{#unless bill}}d-none{{/unless}}">Delete</button>
+    </div>
+    <div id="confirmDeleteDiv" class="mt-3 d-none">
+        <p id="confirmDeleteText">Warning: Deleting this bill cannot be undone!</p>
+        <button id="confirmDeleteButton" type="button" class="btn">Confirm Delete</button>
+    </div>
+</form>
+<script src="/js/editBill.js"></script>

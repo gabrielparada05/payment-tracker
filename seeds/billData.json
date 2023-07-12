@@ -1,0 +1,23 @@
+[
+  {
+    "description": "Credit Card A",
+    "minimum_due": 100.00,
+    "total_due": 500.00,
+    "due_date": "2023-06-30",
+    "user_id": 1
+  },
+  {
+    "description": "Credit Card B",
+    "minimum_due": 50.00,
+    "total_due": 250.00,
+    "due_date": "2023-07-15",
+    "user_id": 2
+  },
+  {
+    "description": "Credit Card C",
+    "minimum_due": 75.00,
+    "total_due": 300.00,
+    "due_date": "2023-07-31",
+    "user_id": 3
+  }
+]
